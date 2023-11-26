@@ -1,0 +1,46 @@
+///Powered by Ak1ne
+
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace ColorPickerApp
+{
+    public partial class MainForm : Form
+    {
+        private Button colorButton;
+
+        public MainForm()
+        {
+
+            colorButton = new Button();
+            colorButton.Text = "Выберите цвет (ну пж)";
+            colorButton.Size = new System.Drawing.Size(150, 50);
+            colorButton.Click += Button_click;
+
+            Controls.Add(colorButton);
+        }
+
+        private void Button_click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                this.BackColor = colorDialog.Color;
+            }
+        }
+
+        [STAThread]
+        public static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            Application.Run(new MainForm());
+        }
+    }
+}
+
+
+///Powered by Ak1ne
